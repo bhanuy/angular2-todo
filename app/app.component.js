@@ -1,4 +1,4 @@
-System.register(['angular2/core', './courses.component', './authors.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './courses.component', './authors.component', './stars.component', './hearts.component', './votes.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './courses.component', './authors.component'],
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, courses_component_1, authors_component_1;
+    var core_1, courses_component_1, authors_component_1, stars_component_1, hearts_component_1, votes_component_1;
     var AppComponent;
     return {
         setters:[
@@ -22,16 +22,36 @@ System.register(['angular2/core', './courses.component', './authors.component'],
             },
             function (authors_component_1_1) {
                 authors_component_1 = authors_component_1_1;
+            },
+            function (stars_component_1_1) {
+                stars_component_1 = stars_component_1_1;
+            },
+            function (hearts_component_1_1) {
+                hearts_component_1 = hearts_component_1_1;
+            },
+            function (votes_component_1_1) {
+                votes_component_1 = votes_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
+                    this.votenumber = 12;
                 }
+                AppComponent.prototype.onFavoriteChange = function ($event) {
+                    console.log($event);
+                };
+                AppComponent.prototype.everyFive = function () {
+                    console.log("hello world!!!");
+                };
+                AppComponent.prototype.changeVote = function ($event) {
+                    // if($event > votenumber)
+                    this.votenumber = $event;
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: '<h1>My Hello Angular 2 App</h1><courses></courses><authors></authors>',
-                        directives: [courses_component_1.CoursesComponent, authors_component_1.AuthorsComponent]
+                        template: "<h1>My Hello Angular 2 App</h1>\n    \t\t\t\t<courses></courses>\n    \t\t\t\t<authors></authors>\n    \t\t\t\t<stars (change)=\"onFavoriteChange($event)\" (everyFiveSecond) =\"everyFive()\"></stars><hearts></hearts>\n    \t\t\t\t<votes totalVotes = {{votenumber}} (change) =\"changeVote($event)\"></votes>",
+                        directives: [courses_component_1.CoursesComponent, authors_component_1.AuthorsComponent, stars_component_1.StarsComponent, hearts_component_1.HeartsComponent, votes_component_1.VotesComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

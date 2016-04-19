@@ -24,12 +24,21 @@ System.register(['angular2/core', './author.service'], function(exports_1, conte
             AuthorsComponent = (function () {
                 function AuthorsComponent(authorService) {
                     this.title = "Title for the author page";
+                    this.imageUrl = "http://www.freesmileys.org/smileys/big/big-smiley-003.gif";
+                    this.isActive = true;
                     this.authors = authorService.getAuthors();
                 }
+                AuthorsComponent.prototype.onDivClick = function () {
+                    console.log("Handled by Div");
+                };
+                AuthorsComponent.prototype.onClick = function ($event) {
+                    $event.stopPropagation();
+                    console.log($event);
+                };
                 AuthorsComponent = __decorate([
                     core_1.Component({
                         selector: 'authors',
-                        template: "<h2>Courses</h2>{{title}}\t\t<ul>\n\t\t\t<li *ngFor = \"#author of authors\">{{author}}</li>\n\t\t</ul>\n\t",
+                        template: "<h2>Courses</h2>{{title}}\t\t<ul>\n\t\t\t<li *ngFor = \"#author of authors\">{{author}}</li>\n\t\t</ul>\n\n\t\t<p>Property binding </p>\n\n\t\t<img [src] = \"imageUrl\" />\n\t\t<img bind-src = \"imageUrl\" />\n\t\t<p> Class binding </p>\n\t\t<button class =\"btn btn-primary\" [class.active]=\"isActive\">Submit</button>\n\t\t<button class =\"btn btn-primary\" [class.disabled]=\"isActive\">Submit</button>\n\t\t<button class =\"btn btn-primary\" [class.active]=\"false\">Submit</button>\n\n\t\t<h3> Style Binding </h3>\n\n\t\t<button [style.color]= \"isActive? 'red': 'green'\">Send</button>\n\n\t\t<h3> Event binding </h3>\n\t\t<div (click) = \"onDivClick()\" [style.backgroundColor] = \"isActive? 'red': 'green'\">\n\t\t\t<button (click) = \"onClick($event)\">Alert</button>\t\t\n\t\t\t<button on-click = \"onClick($event)\">Alert</button>\n\t\t</div>\n\n\t\t<h2> Two way Data binding </h2>\t\n\n\t\t<input type=\"text\" [(ngModel)] = \"title\" />\n\t\t\t\n\t",
                         providers: [author_service_1.AuthorService]
                     }), 
                     __metadata('design:paramtypes', [author_service_1.AuthorService])

@@ -1,0 +1,16 @@
+<div>
+		<span class="star-icons" (click)="onClick(isHide)">
+			<span class="glyphicon glyphicon-star" [class.hidden] ="!isHide"></span>
+			<span class="glyphicon glyphicon-star-empty" [class.hidden] ="isHide"></span>
+		</span>
+	</div>
+
+	<div>
+			<i 
+				class="glyphicon"
+				[class.glyphicon-star]="!isHide"
+				[class.glyphicon-star-empty]="isHide"
+				(click) = onClick(isHide)>
+			</i>
+
+	</div>
