@@ -1,0 +1,60 @@
+<h1>My Hello Angular 2 App</h1>
+<courses></courses>
+<authors></authors>
+<stars (change)="onFavoriteChange($event)" (everyFiveSecond) ="everyFive()"></stars><hearts></hearts>
+<votes totalVotes = {{votenumber}} (change) ="changeVote($event)"></votes>
+<h2> ngIF</h2>
+<div *ngIf ="courses.length > 0">
+	List of courses
+</div>
+<div *ngIf="courses.length == 0">
+	You dont have any courses
+</div>
+
+<div [hidden] ="courses.length > 0">
+	List of courses
+</div>
+<div [hidden] ="courses.length == 0">
+	You dont have any courses
+</div>
+<div>ngSwitch</div>
+
+<ul class="nav nav-pills">
+	<li [class.active] ="navView == 'map'"><a (click) ="navView = 'map'"> Map View</a></li>
+	<li [class.active] ="navView == 'list'"><a (click) ="navView = 'list'">List View</a></li>
+</ul>
+
+<div [ngSwitch]="navView">
+	<template [ngSwitchWhen]="'map'" ngSwitchDefault>This is map view</template>
+	<template [ngSwitchWhen]="'list'">This is list view</template>
+</div>
+
+<h2>Default pipe </h2>
+{{post | json}}
+
+<h2>Custom Pipe</h2>
+<div>{{post.title}}</div>
+<div>{{post.body | summary :10 | uppercase}}</div>
+
+<h3>ngClass, ngStyle directive</h3>
+
+<div [ngClass] ="{
+		'glyphicon glyphicon-plus': true,
+		'selected': true
+	}" 
+	[ngStyle]="{'width': 255, 'height' : 255, 'color':'red'}"
+></div>
+
+<h2>Elvis operator</h2>
+
+<div>{{content.subject?.from}}</div>
+
+<h3>ng-Content</h3>
+<bs-panel>
+	<div class="body">This is body bro!!!!!!!!!!</div>
+		<div class="heading">This is heading bro!!!!!!!!!!</div>
+
+</bs-panel>
+    			
+  <h3>Form angular</h3>
+  <contact-form></contact-form>

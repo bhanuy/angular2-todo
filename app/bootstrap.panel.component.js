@@ -1,4 +1,4 @@
-System.register(['angular2/core', './course.service'], function(exports_1, context_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,34 +10,28 @@ System.register(['angular2/core', './course.service'], function(exports_1, conte
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, course_service_1;
-    var CoursesComponent;
+    var core_1;
+    var BootstrapPanel;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (course_service_1_1) {
-                course_service_1 = course_service_1_1;
             }],
         execute: function() {
-            CoursesComponent = (function () {
-                function CoursesComponent(courseService) {
-                    this.title = "The title of course page";
-                    this.courses = courseService.getCourses();
+            BootstrapPanel = (function () {
+                function BootstrapPanel() {
                 }
-                CoursesComponent = __decorate([
+                BootstrapPanel = __decorate([
                     core_1.Component({
-                        selector: 'courses',
-                        template: "<h2>Courses</h2>{{title}}\n\t\t<ul>\n\t\t\t<li *ngFor = \"#course of courses, #i = index\">{{i + 1}} - {{course}}</li>\n\t\t</ul>\n\t",
-                        providers: [course_service_1.CourseService]
+                        selector: 'bs-panel',
+                        template: "\n\t\t<div class=\"panel panel-default\">\n\n\t\t\t<div class=\"panel-heading\">\n\t\t\t\t<ng-content selected=\".heading\"></ng-content>\n\t\t\t</div>\n\t\t\t<div class=\"panel-body\">\n\t\t\t\t<ng-content selected=\".body\"></ng-content>\n\t\t\t</div>\n\t\t</div>\n\n\t"
                     }), 
-                    __metadata('design:paramtypes', [course_service_1.CourseService])
-                ], CoursesComponent);
-                return CoursesComponent;
+                    __metadata('design:paramtypes', [])
+                ], BootstrapPanel);
+                return BootstrapPanel;
             }());
-            exports_1("CoursesComponent", CoursesComponent);
+            exports_1("BootstrapPanel", BootstrapPanel);
         }
     }
 });
-//# sourceMappingURL=courses.component.js.map
+//# sourceMappingURL=bootstrap.panel.component.js.map

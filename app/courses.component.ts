@@ -5,7 +5,7 @@ import {CourseService} from './course.service'
 	selector: 'courses',
 	template: `<h2>Courses</h2>{{title}}
 		<ul>
-			<li *ngFor = "#course of courses">{{course}}</li>
+			<li *ngFor = "#course of courses, #i = index">{{i + 1}} - {{course}}</li>
 		</ul>
 	`,
 	providers: [CourseService]
